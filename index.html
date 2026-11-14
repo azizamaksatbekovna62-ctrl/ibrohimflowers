@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
+            color: white;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #fafafa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e5b567;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            color: white;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.2)
+                ),
+                url("rd.webp?auto=format&fit=crop&w=2000&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(36px, 5vw, 64px);
+            line-height: 1.15;
+            margin-bottom: 25px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 35px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 16px 35px;
+            background: #e5b567;
+            color: #111;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(229, 181, 103, 0.3);
+        }
+
+        .hero-btn:hover {
+            background: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #777;
+            margin-bottom: 45px;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: #e5b567;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-number {
+            font-size: 38px;
+            font-weight: bold;
+            color: #e5b567;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 220px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Анимацияланган Тугмалар */
+        .btn-action {
+            position: relative;
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #111;
+            background: linear-gradient(135deg, #e5b567, #f7d08a);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            outline: none;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(229, 181, 103, 0.35);
+            margin-top: auto;
+        }
+
+        .btn-action:hover {
+            background: linear-gradient(135deg, #f7d08a, #e5b567);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(229, 181, 103, 0.5);
+        }
+
+        .btn-action:active {
+            transform: translateY(2px) scale(0.97);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-action::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+
+        .btn-action:hover::after {
+            left: 130%;
+        }
+
+        /* МОДАЛЬ ОЙНА СТИЛЛАРИ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 850px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #888;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #111;
+        }
+
+        .modal-title {
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #111;
+        }
+
+        .roses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .rose-item {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .rose-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        .rose-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .rose-item h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .rose-item .price {
+            color: #e5b567;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 25px;
+            text-align: center;
+            background: #111;
+            color: #fd0000;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .roses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero {
+                min-height: 500px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 20px 5%;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                font-size: 13px;
+            }
+            .hero {
+                min-height: 500px;
+                padding: 60px 6%;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            .services {
+                padding: 60px 6%;
+            }
+            .section-title {
+                font-size: 29px;
+            }
+            .cards, .roses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">D/R<span>.</span></div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Подарок</a></li>
+                <li><a href="#about">Заказ</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Создаем прекрасные моменты вместе с вами</h1>
+
+            <p>
+                Свежие цветы, стильные букеты и мягкие игрушки.
+                Мы помогаем воплощать идеи в жизнь и создавать незабываемые подарки,
+                которые вдохновляют и дарят радость вашим близким.
+            </p>
+
+            <a href="#services" class="hero-btn">
+                Узнать больше →
+            </a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">Наши преимущества</h2>
+
+        <p class="section-description">
+            Всё необходимое для вашего успеха в одном месте.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-number">01</div>
+                <img src="logo.jpg" alt="Выбор роз">
+                <h3>Выбор роз</h3>
+                <button class="btn-action" id="openRosesBtn">Открыть</button>
+            </div>
+
+            <div class="card">
+                <div class="card-number">02</div>
+                <img src="mishka logo.jpg" alt="Мягкие игрушки">
+                <h3>Мягкие игрушки</h3>
+                <button class="btn-action" id="openToysBtn">Открыть</button>
+            </div>
+
+            <div class="card">
+                <div class="card-number">03</div>
+                <img src="pandora logo.jpg" alt="Бижутерия Pandora">
+                <h3>Бижутерия Pandora</h3>
+                <button class="btn-action" id="openPandoraBtn">Открыть</button>
+            </div>
+
+            <div class="card">
+                <div class="card-number">04</div>
+                <img src="1001 logo.jpg" alt="Поддержка">
+                <h3>Поддержка</h3>
+                <p>
+                    Помогаем на каждом этапе и всегда готовы ответить на ваши вопросы.
+                </p>
+                <button class="btn-action">Открыть</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- РОЗАЛАР ТУРЛАРИ ОЙНАСИ (MODAL) -->
+    <div class="modal-overlay" id="rosesModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeRosesBtn">×</span>
+            <h2 class="modal-title">Виды Роз</h2>
+            
+            <div class="roses-grid">
+                <div class="rose-item">
+                    <img src="роза кизил.jpg" alt="Красные розы">
+                    <h4>Красные Розы</h4>
+                    <div class="price">110 сом / шт</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;" onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="ок гул.jpg" alt="Белые розы">
+                    <h4>Белые Розы</h4>
+                    <div class="price">130 сом / шт</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="розывый.jpg" alt="Розовые розы">
+                    <h4>Розовые Розы</h4>
+                    <div class="price">120 сом / шт</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="кустовый.jpg" alt="Кустовые розы">
+                    <h4>Кустовые Розы</h4>
+                    <div class="price">180 сом / ветка</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;" onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="пионы.jpg" alt="Пионовидные розы">
+                    <h4>Пионовидные Розы</h4>
+                    <div class="price">150 сом / шт</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;" onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="сарик.jpg" alt="Желтые розы">
+                    <h4>Желтые Розы</h4>
+                    <div class="price">110 сом / шт</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;" onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЯГКИЕ ИГРУШКИ ОЙНАСИ (MODAL) -->
+    <div class="modal-overlay" id="toysModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeToysBtn">×</span>
+            <h2 class="modal-title">Мягкие Игрушки</h2>
+            
+            <div class="roses-grid">
+                <div class="rose-item">
+                    <img src="mishka logo.jpg" alt="Большой медведь">
+                    <h4>Большой Медведь</h4>
+                    <div class="price">1500 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="зайка.jpg" alt="Милый зайка">
+                    <h4>Милый Зайка</h4>
+                    <div class="price">800 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="панда.jpg" alt="Панда">
+                    <h4>Панда</h4>
+                    <div class="price">950 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="яка шох.jpg" alt="Плюшевый единорог">
+                    <h4>Плюшевый Единорог</h4>
+                    <div class="price">1100 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="кошка.jpg" alt="Сонный котенок">
+                    <h4>Сонный Котенок</h4>
+                    <div class="price">750 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="мишка.jpg" alt="Мишка с сердцем">
+                    <h4>Мишка с Сердцем</h4>
+                    <div class="price">1200 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БИЖУТЕРИЯ PANDORA ОЙНАСИ (MODAL) -->
+    <div class="modal-overlay" id="pandoraModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closePandoraBtn">×</span>
+            <h2 class="modal-title">Бижутерия Pandora</h2>
+            
+            <div class="roses-grid">
+                <div class="rose-item">
+                    <img src="1.jpg" alt="Браслет Pandora">
+                    <h4>Серебряный Браслет</h4>
+                    <div class="price">2500 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;" onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="2.jpg" alt="Шарм Pandora">
+                    <h4>Шарм Сердечко</h4>
+                    <div class="price">1200 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="3.jpg" alt="Кольцо Pandora">
+                    <h4>Кольцо с Кристаллом</h4>
+                    <div class="price">1800 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="4.jpg" alt="Ожерелье Pandora">
+                    <h4>Ожерелье Pandora</h4>
+                    <div class="price">3200 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="5.jpg" alt="Серьги Pandora">
+                    <h4>Серьги-пусеты</h4>
+                    <div class="price">1600 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+
+                <div class="rose-item">
+                    <img src="6.jpg" alt="Подарочный набор Pandora">
+                    <h4>Подарочный Набор</h4>
+                    <div class="price">4500 сом</div>
+                    <button class="btn-action" style="padding: 8px 18px; font-size: 13px;"onclick="location.href='https://wa.me/+996709474711'">Заказать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contacts">
+        01.01.26 D/R. I LOVE YOU.
+    </footer>
+
+    <!-- JAVASCRIPT СКРИПТ -->
+    <script>
+        // Розалар модали учун
+        const openRosesBtn = document.getElementById('openRosesBtn');
+        const closeRosesBtn = document.getElementById('closeRosesBtn');
+        const rosesModal = document.getElementById('rosesModal');
+
+        openRosesBtn.addEventListener('click', () => {
+            rosesModal.classList.add('active');
+        });
+
+        closeRosesBtn.addEventListener('click', () => {
+            rosesModal.classList.remove('active');
+        });
+
+        rosesModal.addEventListener('click', (e) => {
+            if (e.target === rosesModal) {
+                rosesModal.classList.remove('active');
+            }
+        });
+
+        // Мягкие игрушки модали учун
+        const openToysBtn = document.getElementById('openToysBtn');
+        const closeToysBtn = document.getElementById('closeToysBtn');
+        const toysModal = document.getElementById('toysModal');
+
+        openToysBtn.addEventListener('click', () => {
+            toysModal.classList.add('active');
+        });
+
+        closeToysBtn.addEventListener('click', () => {
+            toysModal.classList.remove('active');
+        });
+
+        toysModal.addEventListener('click', (e) => {
+            if (e.target === toysModal) {
+                toysModal.classList.remove('active');
+            }
+        });
+
+        // Бижутерия Pandora модали учун
+        const openPandoraBtn = document.getElementById('openPandoraBtn');
+        const closePandoraBtn = document.getElementById('closePandoraBtn');
+        const pandoraModal = document.getElementById('pandoraModal');
+
+        openPandoraBtn.addEventListener('click', () => {
+            pandoraModal.classList.add('active');
+        });
+
+        closePandoraBtn.addEventListener('click', () => {
+            pandoraModal.classList.remove('active');
+        });
+
+        pandoraModal.addEventListener('click', (e) => {
+            if (e.target === pandoraModal) {
+                pandoraModal.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>
